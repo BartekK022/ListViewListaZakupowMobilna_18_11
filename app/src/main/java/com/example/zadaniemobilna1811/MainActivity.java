@@ -72,5 +72,16 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
+        listViewListZakupow.setOnItemLongClickListener(
+                new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        arrayListProdukty.remove(i);
+                        arrayAdapterProdukty.notifyDataSetChanged();
+                        return false;
+                    }
+                }
+        );
+
     }
 }
