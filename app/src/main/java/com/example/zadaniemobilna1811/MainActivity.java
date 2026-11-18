@@ -1,11 +1,14 @@
 package com.example.zadaniemobilna1811;
 
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,6 +53,21 @@ public class MainActivity extends AppCompatActivity {
                         arrayListProdukty.add(produkt);
                         listViewListZakupow.setAdapter(arrayAdapterProdukty);
                         editTextNazwa.setText("");
+                    }
+                }
+        );
+
+        listViewListZakupow.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        TextView textView = (TextView) view;
+
+                        if(textView.getPaintFlags() == Paint.STRIKE_THRU_TEXT_FLAG) {
+                            textView.setPaintFlags(Paint.CURSOR_AFTER);
+                        } else {
+                            textView.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+                        }
                     }
                 }
         );
